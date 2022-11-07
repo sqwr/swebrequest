@@ -1,11 +1,12 @@
 # Stages
 Stages are a breakdown of 
 
-## Fetch stages
-The `fetch` event is divided into a couple of bunch of stages
+- [fetch](fetch/index.md)
+- [install](install/index.md)
+- [activate](activate/index.md)
+- [message](message/index.md)
 
-## Install stages
 
-## Activate stages
+## Add listeners
 
-## Message stages
+## Remove listeners
