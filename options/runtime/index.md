@@ -2,6 +2,8 @@
 
 ## Cache options
 
-#### `caches`
+##### `caches`
 
-#### 
+##### `assets`
+
+##### `storage`

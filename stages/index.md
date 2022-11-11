@@ -7,6 +7,10 @@ Stages are a breakdown of
 - [message](message/index.md)
 
 
-## Add listeners
 
-## Remove listeners
+
+
+## Examples
+```
+swebRequest.onFetchRequest.addListener();
+```

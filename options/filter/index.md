@@ -57,7 +57,7 @@ An array of token for matchin the [origin](https://developer.mozilla.org/en-US/d
 - `subdomains`: the request is a subdomain (i.e. `sub.example.com`) of the service worker domain (i.e. `example.com`)
 - `same-site`: the service worker and the intercepted request are from a same site, i.e. they share a common topsite name, or [eTLD + 1](https://wiki.mozilla.org/Public_Suffix_List). To perform the check, the [topsite](#topsite) option.
 
-#### `topsite`
+##### `topsite`
 A string containing the value of a service worker topsite. This option is used in conjunction with the [origins](#origins) `same-site` value. There are libraries such as [Python3 tld](https://pypi.org/project/tld/) or [NPM tld-extract](https://www.npmjs.com/package/tld-extract) that can be used to compute the eTLD of topsites
 
 ##### `/`
@@ -94,12 +94,6 @@ A code (number), array of (code or array of 2 codes) matching [response status c
 - a array of (codes or array of 2 codes): matching responses must have one of the provided status code numbers, or be in the range of an array of 2 codes, i.e. [200, [300, 399], 403, [500, 505]]
 
 ## Examples
-
-```javascript
-{
-	urls: 
-}
-```
 
 ## See also
 - [runtime options](../runtime/index.md)
