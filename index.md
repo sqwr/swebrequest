@@ -1,6 +1,49 @@
 # swebRequest: the secure service workers library
+![Stages for service workers events](stages/stages.png)
 
+## Examples
+> A whole service worker in standalone mode, using 
+```javascript
+importScripts("swebRequest.js");
+swebRequest.init();
+```
 
+> Standalone use of `swebRequest` with the [cspnonces](features/cspnonces/index.md), [anonymize_xor](features/anonymize_xor/index.md), [encryption](features/encryption/index.md) and [decryption](features/decryption/index.md) features
+```javascript
+importScripts("swebRequest.js");
+swebRequest.init({
+	anonymize_xor: null, cspnonces: null,
+	encryption: { randomBytes: atob("yQL1TPO7aTs5zpEEw+00XN6+kNUMxUSAHoBLNBes5NY=") },
+	decrytion: { randomBytes: atob("yQL1TPO7aTs5zpEEw+00XN6+kNUMxUSAHoBLNBes5NY=") }
+});
+```
+
+> Standalong usage of `swebRequest` with the [cspnonces](features/cspnonces/index.md), [anonymize_xor](features/anonymize_xor/index.md), [encryption](features/encryption/index.md) and [decryption](features/decryption/index.md) features. 
+```javascript
+importScripts("swebRequest.js");
+swebRequest.usefeatures({
+	anonymize_xor: null, cspnonces: null,
+	encryption: { randomBytes: atob("yQL1TPO7aTs5zpEEw+00XN6+kNUMxUSAHoBLNBes5NY=") },
+	decryption: { randomBytes: atob("yQL1TPO7aTs5zpEEw+00XN6+kNUMxUSAHoBLNBes5NY=") }
+});
+```
+
+## Syntax
+The main methods of `swebRequest` are shown below
+```javascript
+swebRequest.init(features?, strategies?, stages?, standalone?, phases?); // standalone usage
+swebRequest.usefeatures(features?, strategies?, stages?); // standalong usage
+swebRequest.[stage].addListener(listener?, filter?, extra?, xfilter?, prepend?); // add callbacks
+swebRequest.features.define(name, listener, stages?, filter?, extra?, xfilter?); // 
+swebRequest.strategies.define(name, stages); // 
+swebRequest.strategies.[STRATEGY](filter?, extra?, xfilter?)
+swebRequest.commons.plugin(feature, filter?); //Workbox usage
+swebRequest.features.[FEATURE](filter?, extra?, xfilter?)
+```
+where:
+- [init](methods)
+
+Table of contents
 - [Demos](demos/index.md)
 	- [Our main demo website](demos/wbox/index.md)
 	- [Our Wordpress site](demos/wordpress/index.md)

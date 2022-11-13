@@ -4,6 +4,12 @@ The properties of HTTP [requests](https://developer.mozilla.org/en-US/docs/Web/A
 
 A missing, `undefined` or `null` filter matches all requests and responses. Likewise, a missing, `undefined` or `null` filter property matches the related request, response or browser property, no matter its value.
 
+Filter options apply to:
+- [addListener](../../stages/methods/addListener/index.md) method for adding callbacks to stages
+- features [definition](../../features/index.md#define) and [usage](../../features/index.md#enable) 
+- strategies [definition](../../strategies/index.md#define) and [usage](../../strategies/index.md#enable)
+
+
 ## Browser network state
 - `filter.online`: A [boolean](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) to match the network state of the browser at the moment the related listener is invoked. This `online` filter option makes a lot of sense because service workers can run even when the user's browser is offline. Once can leverage this option to execute some features depending on the network state of the user. Possible values are:
 	- `true` - matches an online browser
@@ -65,13 +71,20 @@ Filter options for matching [responses properties](https://developer.mozilla.org
 	- a array of (codes or array of 2 codes): matching responses must have one of the provided status code numbers, or be in the range of an array of 2 codes, i.e. `[200, [300, 399], 403, [500, 505]]`
 
 ## Built-in Runtime options
-- `filter.caches`:
-- `filter.assets`:
+These runtime options are built-in and used by different stages for manipulating the cache. 
+- `filter.caches`: array of names of caches, where to read or write HTTP responses. This is leveraged at the [cache-read](../../stages/events/fetch/index.md#cache-read-stages) and [cache-write](../../stages/events/fetch/index.md#cache-write-stages). 
+- `filter.assets`: array of request urls or objects
 - `filter.storage`:
 
 
 
 ## Features runtime options
+
+## Examples
+> 
+```javascript
+```
+
 ## See also
 - [runtime options](../runtime/index.md)
 - [xfilter options](../xfilter/index.md)
