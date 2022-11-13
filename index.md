@@ -28,22 +28,10 @@ swebRequest.usefeatures({
 });
 ```
 
-## Syntax
-The main methods of `swebRequest` are shown below
-```javascript
-swebRequest.init(features?, strategies?, stages?, standalone?, phases?); // standalone usage
-swebRequest.usefeatures(features?, strategies?, stages?); // standalong usage
-swebRequest.[stage].addListener(listener?, filter?, extra?, xfilter?, prepend?); // add callbacks
-swebRequest.features.define(name, listener, stages?, filter?, extra?, xfilter?); // 
-swebRequest.strategies.define(name, stages); // 
-swebRequest.strategies.[STRATEGY](filter?, extra?, xfilter?)
-swebRequest.commons.plugin(feature, filter?); //Workbox usage
-swebRequest.features.[FEATURE](filter?, extra?, xfilter?)
-```
-where:
-- [init](methods)
+
 
 Table of contents
+- [API](api/index.md)
 - [Demos](demos/index.md)
 	- [Our main demo website](demos/wbox/index.md)
 	- [Our Wordpress site](demos/wordpress/index.md)
