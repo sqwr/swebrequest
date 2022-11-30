@@ -1,6 +1,8 @@
 # Extra options
 
-These options, which we refer to as `extra_options` or `extra` serve to augment listeners parameters with additional properties, as shortcut for enabling features, and routing listeners, or to specify if listeners should be executed asynchronously. 
+These options serve to augment listeners parameters with additional properties, as shortcut for enabling features, and routing listeners, or to specify if listeners should be executed asynchronously. 
+We refer to the extra options objects as `extra_options` or `extra`, and to their types as `ExtraOptions` or `Extra`.
+
 Extra options can be provided when:
 - adding listeners to stages
 - defining features

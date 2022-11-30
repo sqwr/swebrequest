@@ -1,11 +1,16 @@
 # Filter options
 
+Filter options are primarily meant to 
+
+We refer to the filter options objects as `filter` or `filter_options` and to their types as `Filter` or `FilterOptions`.
 
 
 ## Matching options
+Before executing a listener, the filter options in this category are checked against the listener [parameter](details.md#parameter). For listeners that handle requests and responses, many filter options can be declaratively used to specify matching patterns. For other types of listeners, a custom filter function can be provided to decide on whether the listener should be executed or not. Notably, as service workers execute even offline, there is the special `online` option to  
+
 
 ### Request properties options
-Optional options for filtering requests
+Optional options for filtering requests. These properties are meaningful to listeners that manipulate requests objects, in particular those of the fetch stages. These filter options are matched against the listener `details.request` properties. 
 
 | Property | Description | Types / Values | 
 --- | --- | --- | 
@@ -24,6 +29,7 @@ Optional options for filtering requests
 
 
 ### Response properties options
+These properties can be provided to filter listeners that manipulate response objects, as they are included in the listener `details.response` paramater. Mind the `rtypes` for response types, as `types` was already used for request types.  
 
 | Property | Description | Types / Values | 
 --- | --- | --- |
@@ -33,6 +39,7 @@ Optional options for filtering requests
 
 
 ### Network state options
+Service workers work even when the user browser is offline. One can use this filter option to decide whether a listener is executed or not depending on the network stage. 
 
 | Property | Description | Types / Values | 
 --- | --- | --- | 
@@ -40,13 +47,17 @@ Optional options for filtering requests
 
 
 ### Filter as a function
+In case the declarative properties provided above do not meet your needs, you can write your own filter function.
+If you have additional runtime options to be inclueded in the same `filter` option, you can specify the custom filter function under `filter.func` as shown in the Table below. Otherwise, the whole `filter` option can be specified as a function (with the same signature as `filter.func`). 
 
 | Property | Description | Types / Values | 
 --- | --- | --- | 
 `func` | define custom filtering logic | `(details: Details) => boolean` returns `true` for matching, and false otherwise |
 
+As one can observe, the filter function is passed the exact same [details](#details.md) as listeners. Unless it is absolutely necessary, one should prefer rather doing the filtering directly within the listener function, and continue its execution is all the conditions of the custom filter functions are met.
 
 ## Runtime options
+Filter options represent the mechanism by which runtime options are passed to listeners. Indeed, as all filter options are added to the [details.filter](details.md#runtime-properties) of listener parameters, one can add custom options to filters and recover them at runtime under `details.filter`
 
 ### Cache storage options
 
@@ -57,7 +68,7 @@ Optional options for filtering requests
 `storage` | string of type cache | `"cache"` for the [cache](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage) and `"indexedDB"` for [indexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB)
 
 ### Network fetch options
-
+Making [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch) requests with options. `swebRequest`
 | Property | Description | Types / Values | 
 --- | --- | --- |
 `timeout` | number in milliseconds to be used when making fetch | `2000` (2 seconds), `10000` (10 seconds) |
@@ -65,10 +76,15 @@ Optional options for filtering requests
 
 
 
+## Filter as a function
+
+| Property | Description | Types / Values | 
+--- | --- | --- |
+`func` |  a custom function that returns a boolean to indicate a match | `(details: Details) => boolean` |
+
+The `filter` option can be an object with the properties described above. 
+
 ### Features options
 
 | Property | Description | Types / Values | 
 --- | --- | --- | 
-
-
-## Filter as a function

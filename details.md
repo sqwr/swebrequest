@@ -1,7 +1,8 @@
 # Details
 Object defining the structure of listeners paramaters and return values
 In other words, this is a uniform type of objects that listeners receive and return.
-We refer to these objects as `details`.
+We refer to these objects as `details` and their types as `Details`.
+
 
 ## paramater
 Properties that can be found in `details` when passed as a parameter to a listener. Some properties are always present, others are event-, stage-specific or user-defined at runtime.
