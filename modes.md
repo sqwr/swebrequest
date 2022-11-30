@@ -1,6 +1,4 @@
 #  Usage modes
-`swebRequest` usage modes refer to whether one is writing a brand new service worker, or has an existing service worker to be augmented with security and privacy features. 
-A goog number of service worker events can only be registered once. More precisely, only the first instance of the registration will be considered while the subsequent registrations will be ignored. This is the case for the `install`, `activate` and the `fetch` which we recall is the core of `swebRequest`. 
 
 ## Standalone mode
 In the `standalone` mode (the recommended usage mode), `swebRequest` will transparently register those events, and then execute stages, listeners, enabled features and perform enabled routing strategies. In particular, the `indexedDB` storage usage can be enabled whenever necessary, to accomodate more advanced types of HTTP responses (to `POST`, `PUT` methods for instance) 
