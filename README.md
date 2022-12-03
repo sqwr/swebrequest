@@ -1,40 +1,92 @@
+# swebRequest: the secure service workers library
+![Stages for service workers events](stages/stages.png)
 
-standard/common operations/actions: download, store, read and delete of HTTP requests and responses on cache storages. servvice workers are event-based, so those operations happen when the events occur, i.e. fetch, install, activate. 
+## Examples
+> A whole service worker in standalone mode, using 
+```javascript
+importScripts("swebRequest.js");
+swebRequest.init();
+```
 
-The main intuition of swebRequest is that before and after the standard/common service workers operations occur, one can perform custom/security/privacy operations/actions. For instance, HTTP responses can be encrypted before they are stored in the cache. Likewise, the encrypted HTTP responses can be decrypted after cache-reads. 
+> Standalone use of `swebRequest` with the [cspnonces](features/cspnonces/index.md), [anonymize_xor](features/anonymize_xor/index.md), [encryption](features/encryption/index.md) and [decryption](features/decryption/index.md) features
+```javascript
+importScripts("swebRequest.js");
+swebRequest.init({
+	anonymize_xor: null, cspnonces: null,
+	encryption: { randomBytes: atob("yQL1TPO7aTs5zpEEw+00XN6+kNUMxUSAHoBLNBes5NY=") },
+	decrytion: { randomBytes: atob("yQL1TPO7aTs5zpEEw+00XN6+kNUMxUSAHoBLNBes5NY=") }
+});
+```
 
-A uniform API for defining and performing operations, i.e. listener
-A stage is a logical spot where performing zero, one or more operations
-
-
-
-
-custom operations: listeners
-
-a stage models an operation, standard or custom.
-a listener, takes an action...
-     - a feature, a named listener, or a named action
-
-
-- provide a uniform API for performing common service worker operations.
-    - Via the concept of listener
-- support the standard operations by default 
-- provide support for custom operations
-
-`onCacheMatch`: 
+> Standalong usage of `swebRequest` with the [cspnonces](features/cspnonces/index.md), [anonymize_xor](features/anonymize_xor/index.md), [encryption](features/encryption/index.md) and [decryption](features/decryption/index.md) features. 
+```javascript
+importScripts("swebRequest.js");
+swebRequest.usefeatures({
+	anonymize_xor: null, cspnonces: null,
+	encryption: { randomBytes: atob("yQL1TPO7aTs5zpEEw+00XN6+kNUMxUSAHoBLNBes5NY=") },
+	decryption: { randomBytes: atob("yQL1TPO7aTs5zpEEw+00XN6+kNUMxUSAHoBLNBes5NY=") }
+});
+```
 
 
-# Licence and Copyright
-Copyright 2022 **ANONYMOUS INSTITUTION**
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Table of contents
+- [API](api/index.md)
+- [Demos](demos/index.md)
+	- [Our main demo website](demos/wbox/index.md)
+	- [Our Wordpress site](demos/wordpress/index.md)
+	- [Any website](demos/bbox/index.md)
+- [Installation](installation/index.md)
+	- [Single line integration](installation/sli/index.md)
+	- [Wordpress plugin](installation/wordpress/index.md)
+- [Contexts](contexts/index.md)
+	- [Websites](contexts/websites/index.md)
+	- [Chrome extensions](contexts/extensions/index.md)
+	- [Cloudflare Workers](contexts/cloudflare/index.md)
+- [Modes](modes/index.md)
+	- [standalone](modes/standalone/index.md)
+	- [standalong](modes/standalong/index.md)
+	- [workbox](modes/workbox/index.md)
+- [Stages](stages/index.md)
+	- [fetch](stages/fetch/index.md)
+	- [install](stages/install/index.md)
+	- [activate](stages/activate/index.md)
+	- [message](stages/message/index.md)
+- [Features](features/index.md)
+	- [encryption](features/encryption/index.md)
+	- [decryption](features/decryption/index.md)
+	- [signature](features/signature/index.md)
+	- [verification](features/verification/index.md)
+	- [cspnonces](features/cspnonces/index.md)
+	- [originpolicies](features/originpolicies/index.md)
+	- [anonymize](features/anonymize/index.md)
+	- [anonymize_xor](features/anonymize_xor/index.md)
+	- [injectscripts](features/injectscripts/index.md)
+	- [timestamp](features/timestamp/index.md)
+	- [timestamp_verify](features/timestamp_verify/index.md)
+	- [secureswsregistration](features/secureswsregistration/index.md)
+	- [swcookie](features/swcookie/index.md)
+	- [setRequestHeaders](features/setRequestHeaders/index.md)
+	- [setResponseHeaders](features/setResponseHeaders/index.md)
+	- [navigationPreload](features/navigationPreload/index.md)
+	- [firewall](features/firewall/index.md)
+	- [securerandomtoken](features/securerandomtoken/index.md)
+	- [randomtoken](features/randomtoken/index.md)
+	- [perfstart](features/perfstart/index.md)
+	- [perfsend](features/perfstart/index.md)
+- [Strategies](strategies/index.md)
+	- [cacheFirst](strategies/cacheFirst/index.md)
+	- [cacheOnly](strategies/cacheOnly/index.md)
+	- [cacheAndRevalidate](strategies/cacheAndRevalidate/index.md)
+	- [networkOnly](strategies/networkOnly/index.md)
+	- [networkFirst](strategies/networkFirst/index.md)
+	- [networkFirstTimeout](strategies/networkFirstTimeout/index.md)
+	- [precaching](strategies/precaching/index.md)
+	- [cleanup](strategies/cleanup/index.md)
+	- [postMessage](strategies/postMessage/index.md)
+- [Hooks](hooks/index.md)
+	- [fetch](hooks/fetch/index.md)
+	- [cache](hooks/cache/index.md)
+	- [indexedDB](hooks/indexedDB/index.md)
 
-    http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.

@@ -1,0 +1,3 @@
+swebRequest.init({ 
+	cspnonces: null
+})
