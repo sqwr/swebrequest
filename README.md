@@ -1,5 +1,5 @@
 # swebRequest: the secure service workers library
-![Stages for service workers events](stages/stages.png)
+![Stages for service workers events](images/stages.png)
 
 `swebRequest` is a library for writing service workers (SWs) and augmenting them with security and privacy features. Visit [our demo](https://swebrequest.doitsec.net/home.htm) website to see its features in action.
 
@@ -49,10 +49,10 @@ See [workbox](modes/workbox.md) for more details about this mode of usage
 
 ## Table of contents
 - [Features](features.md)
-- [API](apis.md)
+- [Docs](swebRequest.md)
 - [Installation](INSTALL.md)
 - [Usage modes](modes.md)
-- [Usage contexts]
+- [Usage contexts](contexts.md)
 - [Strategies](strategies.md)
 - [Demos](demos.md)
 

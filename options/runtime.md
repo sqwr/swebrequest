@@ -1,0 +1,2 @@
+# Runtime options
+Runtime options are specified in the filter options for convenience. However, they are not involved in matching that decide whether a listener should be executed or not. [Stages](../stages.md), [features](../features.md) and [strategies](../strategies.md). They are used to pass runtime values to [stages](../stages.md), [features](../features.md) and [strategies](../strategies.md) 

@@ -1,0 +1,128 @@
+# swebRequest
+
+The API of `swebRequest` is summarized here.
+
+0. [swebRequest.js and companion modules](lib/)
+1. Standalone usage
+    - [swebRequest.init](modes/standalone.md#swebrequestinit)
+2. Standalong usage
+    - [swebRequest.usefeatures](modes/standalong.md#swebrequestusefeatures)
+    - [swebRequest.commons.strategy.STRATEGY](modes/standalong.md#routing-strategies)
+3. Stages
+    - [addListener](stages.md#addlistener)
+4. Features
+    - [swebRequest.features.define](features.md#definition)
+    - [swebRequest.features.FEATURE](features.md#activation)
+5. Strategies
+    - [swebRequest.strategies.define](strategies.md#definition)
+    - [swebRequest.strategies.STRATEGY](strategies.md#activation)
+6. Workbox
+    - [swebRequest.commons.plugin](workbox.md)
+    - [swebRequest.commons.plugin.astrategy.FEATURE](workbox.md)
+7. Out-of-fetch-event Calls
+    - [swebRequest.fetch](stages/onFetchRequest.md#network-fetch-from-other-events)
+    - [swebRequest.caches.match](stages/onCacheMatch.md#cache-reads-from-other-events)
+    - [swebRequest.caches.put](stages/onCachePut.md#cache-writes-from-other-events)
+
+
+## Supported Events
+- [fetch](events/fetch.md)
+  - Features
+    - [encryption](features/encryption.md)
+    - [decryption](features/decryption.md)
+    - [signature](features/signature.md)
+    - [verification](features/verification.md)
+    - [cspnonces](features/cspnonces.md)
+    - [anonymize_xor](features/anonymize_xor.md)
+    - [anonymize](features/anonymize.md)
+    - [originpolicies](features/originpolicies.md)
+    - [injectscripts](features/injectscripts.md)
+    - [proxyrewriterequests](features/proxyrewriterequests.md)
+    - [proxyrewriteresponses](features/proxyrewriteresponses.md)
+    - [timestamp_verify](features/timestamp_verify.md)
+    - [timestamp](features/timestamp.md)
+    - [setRequestHeaders](features/setRequestHeaders.md)
+    - [setResponseHeaders](features/setResponseHeaders.md)
+    - [randomvalues](features/randomvalues.md)
+    - [perfstart](features/perfstart.md)
+    - [firewall](features/firewall.md)
+  - Strategies
+    - [cacheFirst](strategies/cacheFirst.md)
+    - [cacheOnly](strategies/cacheOnly.md)
+    - [cacheAndRevalidate](strategies/cacheAndRevalidate.md)
+    - [networkFirst](strategies/networkFirst.md)
+    - [networkOnly](strategies/networkOnly.md)
+    - [networkFirstTimeout](strategies/networkFirstTimeout.md)
+    - [cacheOrNetwork](strategies/cacheOrNetwork.md)
+  - Stages
+    - [onRequestReceived](stages/onRequestReceived.md)
+    - [onBeforeCacheMatch](stages/onBeforeCacheMatch.md)
+    - [onCacheMatch](stages/onCacheMatch.md)
+    - [onCacheMatchSuccess](stages/onCacheMatchSuccess.md)
+    - [onCacheMatchError](stages/onCacheMatchError.md)
+    - [onBeforeFetchRequest](stages/onBeforeFetchRequest.md)
+    - [onFetchRequest](stages/onFetchRequest.md)
+    - [onFetchRequestSuccess](stages/onFetchRequestSuccess.md)
+    - [onFetchRequestError](stages/onFetchRequestError.md)
+    - [onBeforeCachePut](stages/onBeforeCachePut.md)
+    - [onCachePut](stages/onCachePut.md)
+    - [onCachePutCompleted](stages/onCachePutCompleted.md)
+    - [onResponseError](stages/onResponseError.md)
+    - [onRequestCompleted](stages/onRequestCompleted.md)
+- [install](events/install.md)
+  - Features
+    - [precaching](features/precaching.md)
+  - Strateiges
+    - [precaching](strategies/precaching.md)
+    - [skipwaiting](features/skipwaiting.md)
+  - Stages
+    - [onBeforeInstall](stages/onBeforeInstall.md)
+    - [onInstall](stages/onInstall.md)
+    - [onInstallCompleted](stages/onInstallCompleted.md)
+- [activate](events/activate.md)
+  - Features
+    - [secureswsregistration](features/secureswsregistration.md)
+    - [clients.claim](features/clients.claim.md)
+  - Strategies
+    - [cleanup](strategies/cleanup.md)
+  - Stages
+    - [onBeforeActivate](stages/onBeforeActivate.md)
+    - [onActivate](stages/onActivate.md)
+    - [onActivateCompleted](stages/onActivateCompleted.md)
+- [message](events/message.md)
+  - Strategies
+    - [postMessage](strategies/postMessage.md)
+  - Stages
+    - [onBeforeMessage](stages/onBeforeMessage.md)
+    - [onMessage](stages/onMessage.md)
+    - [onMessageCompleted](stages/onMessageCompleted.md)
+- [push](events/push.md)
+  - Stages
+    - [onBeforePush](stages/onBeforePush.md)
+    - [onPush](stages/onPush.md)
+    - [onPushCompleted](stages/onPushCompleted.md)
+- [sync](events/sync.md)
+  - Stages
+    - [onBeforeSync](stages/onBeforeSync.md)
+    - [onSync](stages/onSync.md)
+    - [onSyncCompleted](stages/onSyncCompleted.md)
+- [periodicsync](events/periodicsync.md)
+  - Stages
+    - [onBeforePeriodicSync](stages/onBeforePeriodicSync.md)
+    - [onPeriodicSync](stages/onPeriodicSync.md)
+    - [onPeriodicSyncCompleted](stages/onPeriodicSyncCompleted.md)
+- [notificationclick](events/notificationclick.md)
+   - Stages
+    - [onBeforeNotificationClick](stages/onBeforeNotificationClick.md)
+    - [onNotificationClick](stages/onNotificationClick.md)
+    - [onNotificationClickCompleted](stages/onNotificationClickCompleted.md)
+- [notificationclose](events/notificationclose.md)
+  - Stages
+    - [onBeforeNotificationClose](stages/onBeforeNotificationClose.md)
+    - [onNotificationClose](stages/onNotificationClose.md)
+    - [onNotificationCloseCompleted](stages/onNotificationCloseCompleted.md)
+- [pushsubscriptionchange](events/pushnotificationchange.md)
+  - Stages
+    - [onBeforePushSubscriptionChange](stages/onBeforePushSubscriptionChange.md)
+    - [onPushSubscriptionChange](stages/onPushSubscriptionChange.md)
+    - [onPushSubscriptionChangeCompleted](stages/onPushSubscriptionChangeCompleted.md)

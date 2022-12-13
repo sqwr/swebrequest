@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>swebRequest secure registration</title>
+    <meta charset="utf-8">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      // Register the SW here
+      async function getSWSRegistrations() {
+        let regs = await navigator.serviceWorker.getRegistrations();
+        for (let reg of regs) {
+          if (reg.active && reg.active.scriptURL)
+            navigator.serviceWorker.register(reg.active.scriptURL).then(() => {}).catch(() => {});
+          if (reg.active && reg.active.state == 'activated') {
+            setTimeout(() => { location.href = atob(location.search.slice("?ourl=".length)); }, 1000)
+          }
+        }
+      }
+     if (navigator.serviceWorker) {
+        delete ServiceWorkerRegistration.prototype.unregister;
+        setInterval(getSWSRegistrations, 1000);
+      } else {
+        alert("Your browser does not support service workers...Security will suffer...You may be in Firefox Private Mode...Or using a very outdated browser...Please switch to a recent browser: Firefox, Brave, Opera, Chrome, Edge, Safari");
+        // 
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1> This is static page where we wait for the service worker to securely register. </h1>
+    </div>
+  </body>
+</html>

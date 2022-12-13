@@ -1,2 +1,0 @@
-# Cryptographically secure random bytes for crypto
-The crypto `encryption`, `decryption`, `signature` and `verification` features require cryptographically secure random bytes that are delivered to websites so as to be only accessible to service workers and persisted in the browser 
