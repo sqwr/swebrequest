@@ -77,19 +77,3 @@ swebRequest.init({
 
  good number of service worker events can only be registered once. More precisely, only the first instance of the registration will be considered while the subsequent registrations will be ignored. This is the case for the `install`, `activate` and the `fetch` which we recall is the core of `swebRequest`. 
 
-### Standalone
-```javascript
-swebRequest.init(_features?: { [type: string]: FilterOptions }, _strategies?: { [type: string]: FilterOptions }, _stages?: { [type: string]: FilterOptions }, _standalone?: boolean, _phases?: { [type: string ]: boolean } )
-```
-
-### Standalong
-### Workbox
-
-
-## Contexts
-
-### Web sites
-### Cloudflare Workers
-### Browser extensions
-
-## Wordpress Plugins
