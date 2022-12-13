@@ -5,12 +5,6 @@ Here we show how to usage the many security and privacy features built-in `swebR
 
 ## Activation
 Features can be enabled in many ways:
-
-| Activation mode | Method | Description | Examples |
-|--|--|--|--|
-Direct invocation | `swebRequest.features.FEATURE()` | Add the feature listener to (default) stages where it is executed, passing runtime options | `swebRequest.features.encryption({ randomBytes: "r@ndom321" })` | 
-As extra options | `swebRequest.STAGE.addListener
-
 ## Direct invocation
 Defined features are added to `swebRequest.features.FEATURE` object as methods]
 
