@@ -27,13 +27,6 @@ Features can be passed to the `swebRequest.usefeatures` method that enables the 
 `swebRequest` can be used as plugins for service workers implemented with [Workbox](modes/workbox.md)
 
 
-Table of content
-- [encryption](features/encryption.md): encrypts HTTP responess before cache writes
-- [decryption](#decryption): decrypts HTTP responses after cache reads
-- [signature](#signature): signs HTTP responess before cache writes
-- [verification](#verification): verifies the signature of HTTP responses after cache reads
-
-
 
 
 
