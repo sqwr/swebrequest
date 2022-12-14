@@ -41,6 +41,13 @@ swebRequest.init({
 ```
 
 
+
+## Listener parameters and return values
+Properties of stages listeners `details` parameters are shown in [details](../details.md)
+- [common properties](../details.md#all-events-properties)
+- specific fetch event stages listeners [request parameters properties](../details.md#request-object-specific-properties) and [response parameters properties](../details.md#response-objects-specific-properties)
+- specific push event stages listeners [return request properties](../details.md#return-request-object-specific-properties) and [return response properties](../details.md#return-response-objects-specific-properties)
+
 ## Stages
 ![Stages for the fetch event](../images/fetchstages.png)
 

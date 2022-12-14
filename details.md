@@ -12,8 +12,8 @@ They describe the fired event.
 
 | Property | Description | Types / Values | 
 --- | --- | --- | 
-| `event?` | the fired event i.e. | [FetchEvent](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent), [InstallEvent](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent), [ActivateEvent](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent), [ExtendableMessageEvent](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent), [PushEvent](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent), [SyncEvent](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent), [PeriodicSyncEvent](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncEvent), [NotificationClickEvent](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent), [NotificationCloseEvent](https://developer.mozilla.org/en-US/docs/Web/API/Notification/close_event) |
-`phase` | the [event type](https://developer.mozilla.org/en-US/docs/Web/API/Event/type) | string, i.e. `fetch`, `install`, `activate`, `message`, `push`, `sync`, `periodicsync`, `notificationclick`, `notificationclose` |
+| `event?` | the fired event i.e. | [FetchEvent](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent), [InstallEvent](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent), [ActivateEvent](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent), [ExtendableMessageEvent](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent), [PushEvent](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent), [SyncEvent](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent), [PeriodicSyncEvent](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncEvent), [NotificationClickEvent](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent), [NotificationCloseEvent](https://developer.mozilla.org/en-US/docs/Web/API/Notification/close_event), [PushSubscriptionChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/pushsubscriptionchange_event) |
+`phase` | the [event type](https://developer.mozilla.org/en-US/docs/Web/API/Event/type) | string, i.e. `fetch`, `install`, `activate`, `message`, `push`, `sync`, `periodicsync`, `notificationclick`, `notificationclose`, `pushsubscriptionchange` |
 
 ### Runtime properties
 
@@ -88,6 +88,11 @@ Properties available to the `periodicsync` event stages: `onBeforePeriodicSync`,
 --- | --- | --- | 
 `tag` | alias to `PeriodicSyncEvent.tag` | any, [PeriodicSyncEvent.tag](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncEvent/tag)
 
+### Pushsubscriptionchange events specific properties
+Properties available to the `pushsubscriptionchange` event stages
+| Property | Description | Types / Values | 
+--- | --- | --- | 
+`oldSubscription` | alias to `event.oldSubscription` | 
 
 
 ### Standalong strategies specific properties
@@ -101,13 +106,13 @@ See [standalong strategies](#strategies.md) for more details.
 
 
 
-## return value
+## Return value
 The properties of the `details` object as a return value contain new or modified request/response raw objects, headers or bodies  event-specific information such as post message data, push event notification to be shown to the user, etc. The values of these properties will be passed to subsequent listeners and stages. 
 Properties such as `next` or `parallels` guide custom routing, i.e. next stage to jump to or concurrent stages to be handled next. 
 Finally, stateful information can be stored in the `event` object. As this property is global, the state information can be consistently accessed by all subsequent listeners. 
 
 
-### Request object specific properties
+### Return Request object specific properties
 These properties can be returned by  `fetch` event stages listeners. They will replace the original ones and passed to subsequent listeners and stages. The `request`, `requestHeaders` and `requestBody`  will override respectively the original raw request, headers and body. 
 
 | Property | Description | Types / Values | 
@@ -116,7 +121,7 @@ These properties can be returned by  `fetch` event stages listeners. They will r
 `requestHeaders?` | serialized request headers | [Object literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#object_literals), i.e. `{a: b, c: d, ...}` |
 `requestBody?` | serialized request body, i.e. as text (default) | [text](https://developer.mozilla.org/en-US/docs/Web/API/Request/text), [arrayBuffer](https://developer.mozilla.org/en-US/docs/Web/API/Request/arrayBuffer), [json](https://developer.mozilla.org/en-US/docs/Web/API/Request/json), [blob](https://developer.mozilla.org/en-US/docs/Web/API/Request/blob), [formData](https://developer.mozilla.org/en-US/docs/Web/API/Request/formData) | 
 
-### Response objects specific properties
+### Return Response objects specific properties
 These properties can be returned by  `fetch` event stages listeners. They will replace the original ones and passed to subsequent listeners and stages. The `response`, `responseHeaders` and `responseBody`  will override respectively the original raw response, headers and body. 
 
  
@@ -128,14 +133,14 @@ These properties can be returned by  `fetch` event stages listeners. They will r
 
 
 
-### Routing properties
+### Return Routing properties
 | Property | Description | Types / Values | 
 --- | --- | --- | 
 `next?` | name of stage to jump to next | string, i.e. `onRequestCompleted`, `onBeforeFetchRequest`, `onBeforeCacheMatch`, etc. }
 `parallels?` | stage or set of stages to handle concurrently to the next stage | string, i.e. `onBeforeFetchRequest`, [`onBeforeCachePut`, `onRequestCompleted`] |
 `cancel?` | discard all next listeners and stages and jump to the exit stage | boolean: `true`, `false` |
 
-### Message event specific properties
+### Return Message event specific properties
 | Property | Description | Types / Values | 
 --- | --- | --- | 
 `response` | response to send to client data | any |
@@ -145,7 +150,7 @@ At the final `onMessageCompleted`, if the `response` property is present in the 
 - `id`: a reflection of `event.data.id`, an id sent by the client. See [message event specific properties](#message-event-specific-properties)
 
 
-### Push event specific properties
+### Return Push event specific properties
 At the final `onPushCompleted` stage, if those properties are present in the return object, they will be used to generate and show a notification dialog to the user, provided that the user has already granted push notification permission to the origin. The service worker can also navigate the user to a specific URL when they click on the shown notification
 | Property | Description | Types / Values | 
 --- | --- | --- | 
@@ -156,7 +161,7 @@ At the final `onPushCompleted` stage, if those properties are present in the ret
 
 
 
-### Stateful properties
+### Return Stateful properties
 | Property | Description | Types / Values | 
 --- | --- | --- | 
 `event.responsefrom` | where the response was read from | `network` or `cache` |

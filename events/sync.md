@@ -1,6 +1,12 @@
 # sync
-The [sync event](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent) is supported in `swebRequest`. 
 
+![Stages for the sync event](../images/syncstages.png)
+Breakdown of the service workers [sync event](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent). This event can be used to submit pending tasks that have be saved offline. 
+
+## Listener parameters
+Properties of stages listeners `details` parameters are shown in [details](../details.md)
+- [common properties](../details.md#all-events-properties)
+- [specific sync event stages properties](../details.md#sync-events-specific-properties)
 
 ## Stages
 |||

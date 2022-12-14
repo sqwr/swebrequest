@@ -1,6 +1,12 @@
 # periodicsync
-The [periodicsync event](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncEvent) is supported in `swebRequest`. 
 
+![Stages for the sync event](../images/periodicsyncstages.png)
+Breakdown of the service workers [activate ](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncEvent). 
+
+## Listener parameters
+Properties of stages listeners `details` parameters are shown in [details](../details.md)
+- [common properties](../details.md#all-events-properties)
+- [specific periodic event stages listeners parameters properties](../details.md#periodicsync-events-specific-properties)
 
 ## Stages
 |||
