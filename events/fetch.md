@@ -14,6 +14,7 @@ addEventListener('fetch', (event) => {
 ```
 
 To alleviate the complexity of the raw [fetch event](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/fetch_event), `swebRequest` breaks down the event into a set of stages.  
+![Stages for the fetch event](../images/fetchstages.png)
 
 ## Routing strategies
 HTTP requests intercepted go through a [set of stages](#stages), with the goal to generate a response that will be used to fulfill the request and response to the client. This set of proposed stages and the [cacheFirst](../strategies/cacheFirst.md) is based on the observation that service workers tend to perform 3 main actions: [cache-reads](#cache-read), [network-fetch](#network-fetch)  and [cache-writes](#cache-write). 
@@ -49,7 +50,6 @@ Properties of stages listeners `details` parameters are shown in [details](../de
 - specific push event stages listeners [return request properties](../details.md#return-request-object-specific-properties) and [return response properties](../details.md#return-response-objects-specific-properties)
 
 ## Stages
-![Stages for the fetch event](../images/fetchstages.png)
 
 ### Cache-read
 cache-read are preformed at the [onCacheMatch](../stages/onCacheMatch.md) stage. Around it, the auxiliary stages provide opportunity to implement custom features on top of the cached responses. Both the cache and the indexedDB storage are supported. 
